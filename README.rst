@@ -6,33 +6,17 @@
 collective.restapi.pfg
 ======================
 
-Tell me what your product does
+This is an attempt to build a JSON Schema based endpoint for PloneFormGen forms, so the form can be built in the front-end in the same way that is done for Dexterity fields in plone.restapi.
 
-Features
---------
+It also provides a form-data sending endpoint to send the form.
 
-- Can be bullet points
-
-
-Examples
---------
-
-This add-on can be seen in action at the following sites:
-- Is there a page on the internet where everybody can see the features?
+Under the hood it delegates all form processing to PloneFormGen, so it should work as an stardard PloneFormGen.
 
 
 Documentation
 -------------
 
-Full documentation for end users can be found in the "docs" folder, and is also available online at http://docs.plone.org/foo/bar
-
-
-Translations
-------------
-
-This product has been translated into
-
-- Klingon (thanks, K'Plai)
+Not yet :)
 
 
 Installation
@@ -56,14 +40,12 @@ Contribute
 
 - Issue Tracker: https://github.com/collective/collective.restapi.pfg/issues
 - Source Code: https://github.com/collective/collective.restapi.pfg
-- Documentation: https://docs.plone.org/foo/bar
 
 
 Support
 -------
 
 If you are having issues, please let us know.
-We have a mailing list located at: project@example.com
 
 
 License
