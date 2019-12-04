@@ -19,11 +19,14 @@ class CollectiveRestapiPfgLayer(PloneSandboxLayer):
         # The z3c.autoinclude feature is disabled in the Plone fixture base
         # layer.
         import plone.restapi
+        import Products.PloneFormGen
+
+        self.loadZCML(package=Products.PloneFormGen)
         self.loadZCML(package=plone.restapi)
         self.loadZCML(package=collective.restapi.pfg)
 
     def setUpPloneSite(self, portal):
-        applyProfile(portal, 'collective.restapi.pfg:default')
+        applyProfile(portal, "collective.restapi.pfg:default")
 
 
 COLLECTIVE_RESTAPI_PFG_FIXTURE = CollectiveRestapiPfgLayer()
@@ -31,13 +34,13 @@ COLLECTIVE_RESTAPI_PFG_FIXTURE = CollectiveRestapiPfgLayer()
 
 COLLECTIVE_RESTAPI_PFG_INTEGRATION_TESTING = IntegrationTesting(
     bases=(COLLECTIVE_RESTAPI_PFG_FIXTURE,),
-    name='CollectiveRestapiPfgLayer:IntegrationTesting',
+    name="CollectiveRestapiPfgLayer:IntegrationTesting",
 )
 
 
 COLLECTIVE_RESTAPI_PFG_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(COLLECTIVE_RESTAPI_PFG_FIXTURE,),
-    name='CollectiveRestapiPfgLayer:FunctionalTesting',
+    name="CollectiveRestapiPfgLayer:FunctionalTesting",
 )
 
 
@@ -47,5 +50,5 @@ COLLECTIVE_RESTAPI_PFG_ACCEPTANCE_TESTING = FunctionalTesting(
         REMOTE_LIBRARY_BUNDLE_FIXTURE,
         z2.ZSERVER_FIXTURE,
     ),
-    name='CollectiveRestapiPfgLayer:AcceptanceTesting',
+    name="CollectiveRestapiPfgLayer:AcceptanceTesting",
 )

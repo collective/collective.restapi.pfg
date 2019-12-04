@@ -6,6 +6,8 @@
     i18n_domain="collective.restapi.pfg">
 
   <i18n:registerTranslations directory="locales" />
+  <include package="plone.restapi" />
+  <include package="Products.PloneFormGen" />
 
   <!--
     Be careful if you use general includeDependencies, it can have sideffects!
