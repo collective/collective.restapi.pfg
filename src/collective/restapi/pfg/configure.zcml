@@ -13,10 +13,6 @@
   -->
   <!--<includeDependencies package="." />-->
 
-  <include package=".browser" />
-
-  <include file="permissions.zcml" />
-
   <genericsetup:registerProfile
       name="default"
       title="collective.restapi.pfg"
@@ -41,5 +37,7 @@
       />
 
   <!-- -*- extra stuff goes here -*- -->
+  <include package=".serializers" />
+  <include package=".services" />
 
 </configure>

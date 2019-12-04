@@ -1,0 +1,18 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.restapi.pfg">
+
+  <adapter factory=".adapters.DefaultJsonSchemaProvider" />
+  <adapter factory=".adapters.FGStringFieldJsonSchemaProvider" />
+  <adapter factory=".adapters.FGIntegerFieldJsonSchemaProvider" />
+  <adapter factory=".adapters.FGTextFieldJsonSchemaProvider" />
+  <adapter factory=".adapters.FGSelectionFieldJsonSchemaProvider" />
+  <adapter factory=".adapters.FGBooleanFieldJsonSchemaProvider" />
+  <adapter factory=".adapters.FGFileFieldJsonSchemaProvider" />
+  <adapter factory=".adapters.FormMultiFileFieldJsonSchemaProvider" zcml:condition="installed cs.pfg.multifile"/>
+
+
+</configure>
