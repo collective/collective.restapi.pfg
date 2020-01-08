@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from collective.restapi.pfg import _
 from plone.restapi.types.interfaces import IJsonSchemaProvider
 from Products.PloneFormGen.content.fields import BaseFormField
 from Products.PloneFormGen.content.fields import FGBooleanField
@@ -8,9 +7,7 @@ from Products.PloneFormGen.content.fields import FGIntegerField
 from Products.PloneFormGen.content.fields import FGSelectionField
 from Products.PloneFormGen.content.fields import FGStringField
 from Products.PloneFormGen.content.fields import FGTextField
-from Products.PloneFormGen.content.fields import StringVocabularyField
 from zope.component import adapter
-from zope.i18n import translate
 from zope.interface import implementer
 from zope.interface import Interface
 

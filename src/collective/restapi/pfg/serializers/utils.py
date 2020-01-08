@@ -2,12 +2,8 @@
 from collections import OrderedDict
 from plone.restapi.serializer.converters import IJsonCompatible
 from plone.restapi.types.interfaces import IJsonSchemaProvider
-from plone.restapi.types.utils import get_jsonschema_for_portal_type
 from Products.PloneFormGen.content.fields import FGFieldsetEnd
 from Products.PloneFormGen.content.fields import FGFieldsetStart
-from Products.PloneFormGen.interfaces import IPloneFormGenFieldset
-from Products.PloneFormGen.widgets import FieldsetEndWidget
-from Products.PloneFormGen.widgets import FieldsetStartWidget
 from zope.component import queryMultiAdapter
 
 
