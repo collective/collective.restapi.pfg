@@ -111,6 +111,9 @@ class FGSelectionFieldJsonSchemaProvider(DefaultJsonSchemaProvider):
     def get_type(self):
         return "string"
 
+    def get_widget(self):
+        return "select"
+
     def additional(self):
         display_list = self.field.fgField.Vocabulary(self.context)
         return {
@@ -133,29 +136,8 @@ class FGFileFieldJsonSchemaProvider(DefaultJsonSchemaProvider):
     def get_type(self):
         return "object"
 
-    def additional(self):
-        display_list = self.field.Vocabulary(self.field.aq_parent)
-        return {
-            "properties": {
-                "{}.contentType".format(self.field.fgField.getName()): {
-                    "default": "",
-                    "description": _("The content type identifies the type of data."),
-                    "title": "Content Type",
-                    "type": "string",
-                },
-                "{}.data".format(self.field.fgField.getName()): {
-                    "default": "",
-                    "description": _(u"The actual content of the object."),
-                    "title": "Data",
-                    "type": "string",
-                },
-                "{}.filename".format(self.field.fgField.getName()): {
-                    "description": "",
-                    "title": "Filename",
-                    "type": "string",
-                },
-            }
-        }
+    def get_widget(self):
+        return "file"
 
 
 # XXX This adapter should go away from here
@@ -171,29 +153,9 @@ class FormMultiFileFieldJsonSchemaProvider(DefaultJsonSchemaProvider):
             "additionalItems": True,
             "default": [],
             "items": {
-                "type": "object",
+                "type": "string",
                 "title": "",
                 "description": "",
-                "properties": {
-                    "{}.contentType".format(self.field.fgField.getName()): {
-                        "default": "",
-                        "description": _(
-                            "The content type identifies the type of data."
-                        ),
-                        "title": "Content Type",
-                        "type": "string",
-                    },
-                    "{}.data".format(self.field.fgField.getName()): {
-                        "default": "",
-                        "description": _(u"The actual content of the object."),
-                        "title": "Data",
-                        "type": "string",
-                    },
-                    "{}.filename".format(self.field.fgField.getName()): {
-                        "description": "",
-                        "title": "Filename",
-                        "type": "string",
-                    },
-                },
+                "widget": "file",
             },
         }
