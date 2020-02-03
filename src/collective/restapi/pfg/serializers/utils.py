@@ -66,6 +66,7 @@ def get_json_schema_for_form_contents(form, request, excluded_fields=None):
     return {
         "type": "object",
         "title": form.Title(),
+        "description": form.Description(),
         "properties": IJsonCompatible(properties),
         "required": required,
         "fieldsets": fieldsets,
