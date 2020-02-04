@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 from collections import OrderedDict
+from plone.restapi.interfaces import IFieldSerializer
 from plone.restapi.serializer.converters import IJsonCompatible
 from plone.restapi.types.interfaces import IJsonSchemaProvider
 from Products.PloneFormGen.content.fields import FGFieldsetEnd
 from Products.PloneFormGen.content.fields import FGFieldsetStart
 from zope.component import queryMultiAdapter
+from zope.globalrequest import getRequest
 
 
 def get_jsonschema_properties(form, request, prefix="", excluded_fields=None):
@@ -66,8 +68,19 @@ def get_json_schema_for_form_contents(form, request, excluded_fields=None):
     return {
         "type": "object",
         "title": form.Title(),
-        "description": form.Description(),
+        "description": get_serialized_version_of(form, "description"),
+        "formPrologue": get_serialized_version_of(form, "formPrologue"),
+        "formEpilogue": get_serialized_version_of(form, "formEpilogue"),
         "properties": IJsonCompatible(properties),
         "required": required,
         "fieldsets": fieldsets,
     }
+
+
+def get_serialized_version_of(context, fieldname):
+    request = getRequest()
+    field = context.getField(fieldname)
+    serializer = queryMultiAdapter((field, context, request), IFieldSerializer)
+    if serializer is not None:
+        return serializer()
+    return None
