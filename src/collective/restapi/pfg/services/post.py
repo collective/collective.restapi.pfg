@@ -8,6 +8,7 @@ from StringIO import StringIO
 class PloneFormGenPost(Service):
     def reply(self):
         data = json_body(self.request)
+
         self.request.form = self.process_form(data)
         self.context.fgProcessActionAdapters(
             errors=[], fields=None, REQUEST=self.request
@@ -21,7 +22,17 @@ class PloneFormGenPost(Service):
     def fix_attachments(self, data):
         # XXX dirty way to fix file uploads
         if "adjuntos" in data:
-            data["adjuntos"] = [FileUpload(Item(item)) for item in data["adjuntos"]]
+            items = []
+            for item in data["adjuntos"]:
+                if isinstance(item, FileUpload):
+                    # Element comes as a standard FileUpload
+                    items.append(item)
+                else:
+                    # Element comes as plone.restapi file representation
+                    # dict, with 'filename', 'content_type' and 'data' keys
+                    items.append(FileUpload(Item(item)))
+
+            data["adjuntos"] = items
 
         return data
 
