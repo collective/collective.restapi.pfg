@@ -2,6 +2,13 @@
    If you want to learn more about writing documentation, please check out: http://docs.plone.org/about/documentation_styleguide.html
    This text does not appear on pypi or github. It is a comment.
 
+.. image:: https://travis-ci.com/collective/collective.restapi.pfg.svg?branch=master
+    :target: https://travis-ci.com/collective/collective.restapi.pfg
+
+.. image:: https://coveralls.io/repos/github/collective/collective.restapi.pfg/badge.svg?branch=master
+ :target: https://coveralls.io/github/collective/collective.restapi.pfg?branch=master
+
+
 ======================
 collective.restapi.pfg
 ======================
