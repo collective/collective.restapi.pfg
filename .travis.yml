@@ -31,6 +31,6 @@ script:
 
 after_success:
   - bin/createcoverage --output-dir=parts/test/coverage
-  - bin/pip install coverage==5.0.3
-  - bin/pip install -q coveralls==1.11.1
+  - bin/pip install coverage<5
+  - bin/pip install -q coveralls
   - bin/coveralls
