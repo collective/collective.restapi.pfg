@@ -101,6 +101,8 @@ class FGTextFieldJsonSchemaProvider(DefaultJsonSchemaProvider):
         if self.field.fgField.widget.maxlength:
             return {"maxLength": int(self.field.fgField.widget.maxlength)}
 
+        return {}
+
 
 @adapter(FGSelectionField, Interface, Interface)
 @implementer(IJsonSchemaProvider)
